@@ -1,7 +1,7 @@
 import sqlite3
 import customtkinter as ctk
 import pandas as pd
-import openpyxl  # ✅ यह confirm करता है कि openpyxl available है
+import openpyxl 
 from tkinter import messagebox
 
 class PhotoStudioApp:
@@ -10,7 +10,7 @@ class PhotoStudioApp:
         self.root.title("Photo Studio Management")
         self.root.geometry("600x400")
         
-        # ✅ Database Connection
+        #Database Connection
         self.conn = sqlite3.connect("photo_studio.db")
         self.cursor = self.conn.cursor()
         self.create_tables()
@@ -26,7 +26,7 @@ class PhotoStudioApp:
                 booking_date TEXT,
                 amount REAL
             )
-        """)  # ✅ FIXED: Corrected SQL syntax
+        """)  # Corrected SQL syntax
         self.conn.commit()
     
     def create_tabs(self):
@@ -34,33 +34,33 @@ class PhotoStudioApp:
         self.frame = ctk.CTkFrame(self.root)
         self.frame.pack(pady=20)
         
-        # ✅ Customer Name
+        #  Customer Name
         self.label_name = ctk.CTkLabel(self.frame, text="Customer Name:")
         self.label_name.grid(row=0, column=0, padx=10, pady=5)
         self.entry_name = ctk.CTkEntry(self.frame)
         self.entry_name.grid(row=0, column=1, padx=10, pady=5)
         
-        # ✅ Booking Date
+        # Booking Date
         self.label_date = ctk.CTkLabel(self.frame, text="Booking Date:")
         self.label_date.grid(row=1, column=0, padx=10, pady=5)
         self.entry_date = ctk.CTkEntry(self.frame)
         self.entry_date.grid(row=1, column=1, padx=10, pady=5)
         
-        # ✅ Amount
+        #  Amount
         self.label_amount = ctk.CTkLabel(self.frame, text="Amount:")
         self.label_amount.grid(row=2, column=0, padx=10, pady=5)
         self.entry_amount = ctk.CTkEntry(self.frame)
         self.entry_amount.grid(row=2, column=1, padx=10, pady=5)
         
-        # ✅ Add Booking Button
+        #  Add Booking Button
         self.button_add = ctk.CTkButton(self.frame, text="Add Booking", command=self.add_booking)
         self.button_add.grid(row=3, column=0, columnspan=2, pady=10)
         
-        # ✅ Export to Excel Button
+        # Export to Excel Button
         self.button_export = ctk.CTkButton(self.frame, text="Export to Excel", command=self.export_to_excel)
         self.button_export.grid(row=4, column=0, columnspan=2, pady=10)
         
-        # ✅ Booking List
+        #  Booking List
         self.booking_list = ctk.CTkTextbox(self.root, width=500, height=150)
         self.booking_list.pack(pady=10)
         
